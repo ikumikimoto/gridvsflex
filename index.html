@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css">
+  <title>HWH CSS勉強会</title>
+</head>
+<body>
+  <section class="fv">
+    <div class="center">
+      <h1><span class="bl">GRID</span> vs <span class="or">FLEX</span></h1>
+      <p>2019年06月21日</p>
+      <p>木元郁己</p>
+      <p>ハコレコドットコム株式会社</p>
+    </div>
+  </section>
+  <section>
+    <h2>CSSでのレイアウトについて</h2>
+    <p>横並びや、複雑なレイアウトを再現するには複数の方法があります。</p>
+    <ul>
+      <li>tableレイアウト</li>
+      <li>inline-boxで横並び</li>
+      <li>floatとcreafix</li>
+      <li>FLEX BOX</li>
+      <li>GRIDレイアウト</li>
+    </ul>
+    <p>今日はこの中の</p>
+    <ul>
+      <li><s>tableレイアウト</s>　レスポンシブしにくい</li>
+      <li><s>inline-boxで横並び</s>　横並びのみ</li>
+      <li><s>floatとcreafix</s>　なんかめんどくさいしイマドキじゃない</li>
+      <li><span class="or">FLEX BOX</span></li>
+      <li><span class="or">GRIDレイアウト</span></li>
+    </ul>
+    <p>この二つを比較したいと思います。</p>
+  </section>
+  <section>
+    <h2>比較項目</h2>
+    <ul>
+      <li>対応ブラウザ</li>
+      <li>コード</li>
+      <li>表示速度</li>
+    </ul>
+  </section>
+  <section>
+    <h2>対応ブラウザ</h2>
+    <div class="two-col">
+      <div class="flex-col">
+        <h3>GRID</h3>
+        <img src="img2.png" alt="">
+      </div>
+      <div class="flex-col">
+        <h3>FLEX BOX</h3>
+        <img src="img1.png" alt="">
+      </div>
+    </div>
+  </section>
+  <section>
+    <h2>コード（HTML）</h2>
+    <div class="two-col">
+      <div class="flex-col">
+        <div class="grid">
+          <div class="grid-1">grid-1</div>
+          <div class="grid-2">grid-2</div>
+          <div class="grid-3">grid-3</div>
+          <div class="grid-4">grid-4</div>
+        </div>
+      </div>
+      <div class="flex-col">
+        <div class="flex">
+          <div class="flex-1">flex-1</div>
+          <div class="flex-item">
+            <div class="flex-2">flex-2</div>
+            <div class="flex-3">flex-3</div>
+          </div>
+          <div class="flex-4">flex-4</div>
+        </div>
+      </div>
+    </div>
+    <div class="two-col">
+      <pre class="flex-col">
+            &lt;div class=&quot;grid&quot;&gt;
+              &lt;div class=&quot;grid-1&quot;&gt;grid-1&lt;/div&gt;
+              &lt;div class=&quot;grid-2&quot;&gt;grid-2&lt;/div&gt;
+              &lt;div class=&quot;grid-3&quot;&gt;grid-3&lt;/div&gt;
+              &lt;div class=&quot;grid-4&quot;&gt;grid-4&lt;/div&gt;
+            &lt;/div&gt;</pre>
+      <pre class="flex-col">
+            &lt;div class=&quot;flex&quot;&gt;
+              &lt;div class=&quot;flex-1&quot;&gt;flex-1&lt;/div&gt;
+              &lt;div class=&quot;flex&quot;&gt;
+                &lt;div class=&quot;flex-2&quot;&gt;flex-2&lt;/div&gt;
+                &lt;div class=&quot;flex-3&quot;&gt;flex-3&lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;flex-4&quot;&gt;flex-4&lt;/div&gt;
+            &lt;/div&gt;</pre>
+    </div>
+  </section>
+  <section>
+    <h2>コード（CSS）</h2>
+    <div class="two-col">
+      <div class="flex-col">
+        <div class="grid">
+          <div class="grid-1">grid-1</div>
+          <div class="grid-2">grid-2</div>
+          <div class="grid-3">grid-3</div>
+          <div class="grid-4">grid-4</div>
+        </div>
+      </div>
+      <div class="flex-col">
+        <div class="flex">
+          <div class="flex-1">flex-1</div>
+          <div class="flex-item">
+            <div class="flex-2">flex-2</div>
+            <div class="flex-3">flex-3</div>
+          </div>
+          <div class="flex-4">flex-4</div>
+        </div>
+      </div>
+    </div>
+    <div class="two-col">
+      <pre class="flex-col">
+          .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr 1fr;
+          }
+
+          .grid-1 {
+            grid-column: 1 / 5;
+            grid-row: 1 / 2;
+          }
+
+          .grid-2 {
+            grid-column: 1 / 4;
+            grid-row: 2 / 4;
+          }
+
+          .grid-3 {
+            grid-column: 4 / 5;
+            grid-row: 2 / 4;
+          }
+
+          .grid-4 {
+            grid-column: 1 / 5;
+            grid-row: 4 / 5;
+          }
+      </pre>
+      <pre class="flex-col">
+          .flex {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+          }
+
+          .flex-item {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            height: 100px;
+          }
+          .flex-1 {
+            width: 100%;
+          }
+          .flex-2 {
+            width: 75%;
+          }
+          .flex-3 {
+            width: 25%;
+          }
+          .flex-4 {
+            width: 100%;
+          }
+      </pre>
+    </div>
+  </section>
+  <section>
+    <h2>表示速度</h2>
+    <p>理論上は</p>
+    <h3>GRID > FLEX BOX</h3>
+    <p>GRIDは決まったレイアウトの中にコンテンツが読み込まれるのに対して、<br>FLEX BOXはコンテンツの大きさが決まった後にレイアウトが決まるから</p>
+    <p>検証では誤差程度しか差がでませんでした。</p>
+  </section>
+  <section class="last">
+    <h2>結論</h2>
+    <h3>GRID & FLEX BOX</h3>
+    <p>どっちかだけを使うのではなく、臨機応変に適切な方を選ぶ</p>
+    <p>GRID = 2次元</p>
+    <p>FLEX BOX = 1次元</p>
+  </section>
+  <section>
+    <h2>使い分け</h2>
+    <p><span class="or">オレンジ：FLEX BOX</span><br><span class="bl">青：GRID</span</p>
+    <div class="two-col">
+      <div class="img">
+        <p>よくある使い方</p>
+        <img src="img3.png" alt="">
+      </div>
+      <div class="img">
+        <p>GRIDは複雑な配置ができる</p>
+        <img src="img4.png" alt="">
+      </div>
+      <div class="img">
+        <p>GRIDは重なりを表現できる</p>
+        <img src="img5.png" alt="">
+      </div>
+    </div>
+  </section>
+  <section class="fv">
+    <div class="center">
+      <h1><span class="bl">GRID</span> & <span class="or">FLEX BOX</span></h1>
+      <p>2019年06月21日</p>
+      <p>木元郁己</p>
+      <p>ハコレコドットコム株式会社</p>
+    </div>
+  </section>
+</body>
+</html>
